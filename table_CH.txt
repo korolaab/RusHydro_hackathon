@@ -1,0 +1,10 @@
+"CREATE TABLE solar.telemetry
+(
+    `t` DateTime,
+    `id` UInt64,
+    `parameter_name` String,
+    `x` Float64
+)
+ENGINE = MergeTree()
+ORDER BY (t, id)
+SETTINGS index_granularity = 8192"

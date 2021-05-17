@@ -1,0 +1,14 @@
+#!/bin/bash
+key=$(cat /root/tg_bot_key)
+
+#data=$(clickhouse-client -d solar --password RusHydro -q "select parameter_name,x from telemetry where id==1 order by t desc limit 25 format CSV"| sed 's/Heatsink Temp/HT/g')
+voltage="V"
+current="A"
+freq="Hz"
+temp="°C"
+
+
+string=$(printf "%4s %4s %4s %4s\n" $voltage $current $freq $temp)
+#link="https://api.telegram.org/bot$key/sendMessage?chat_id=@mpei_solar&text=\`\`\`%20$string\`\`\`&parse_mode=MarkdownV2"
+link="https://api.telegram.org/bot$key/sendMessage?chat_id=@mpei_solar&parse_mode=MarkdownV2"
+curl -F "text=\`\`\` $string\`\`\`" $link

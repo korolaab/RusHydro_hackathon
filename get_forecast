@@ -1,0 +1,7 @@
+#!/bin/bash
+key=$(cat /root/openweather.key)
+echo $key
+latt=55.755159 
+long=37.709212
+link="https://api.openweathermap.org/data/2.5/onecall?lat=$latt&lon=$long&exclude=minutely,hourly,alerts&appid=$key"
+curl $link
